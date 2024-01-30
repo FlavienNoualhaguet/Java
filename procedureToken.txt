@@ -1,0 +1,31 @@
+# Etape 1
+    - Se connecter sur github
+    - aller dans settings
+    - developper settings
+    - personnal access token
+    - token (classic)
+    - generate new token (classic) en haut a droite
+    - copier le token : placer le dans un fichier (~/gittoken par exemple):
+        LE TOKEN NE SERA PLUS VISIBLE APRES
+    
+# Etape 2
+    - si depot local deja present sur la machine voir etape 5 (et sauter 2, 3 4)
+    - creer un repositorie sur github
+
+# Etape 3
+    - cloner le depot : git clone https://<TOKEN>@github.com/<repo-owner>/<repo-name>
+
+# Etape 4
+    - aller dans le repertoire et verifier le .git/config (l'url doit contenir le token)
+
+# Etape 5 
+    - dans le repertoire du depot
+    - git remote remove origin
+    - git remote add origin https://[TOKEN]@github.com/[REPO-OWNER]/[REPO-NAME]
+    - git push --set-upstream origin main
+    - git branch --set-upstream-tp=origin/main main
+    - git fetch (recupere modif en ligne si il y en a)
+    - git status
+    - git push
+    Normalement c'est bon: le depot local est gere par l'url avec le token (et plus par cle ssh)
+    /!\ A l'Ecole, le protocol ssh est bloque donc on peut pas utiliser la cle ssh.
