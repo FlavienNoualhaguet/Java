@@ -1,18 +1,27 @@
+package tamagotchi;
 import java.util.Random;
+import java.util.Math;
 
-public class Tamagochi {
+
+public class Tamagotchi {
     private int dureeVie;
-    private int energieMax;
+    private final int energieMax;
     private int energie;
     private int age;
     private String nom;
+    private final Random random;
 
     public Tamagochi(String name) {
-        this.dureeVie = java.util.Random.getRandomNumberInRange(9, 14);
-        this.energieMax = java.util.Random.getRandomNumberInRange(5, 9);
-        this.energie = java.util.Random.getRandomNumberInRange(3, this.energieMax);
-        this.age = 0;
         this.nom = name;
+        this.age = 0;
+        this.random = new Random();
+        this.dureeVie = this.randomInt(9, 14);
+        this.energieMax = this.randomInt(5, 9);
+        this.energie = this.randomInt(3, this.energieMax);
+    }
+
+    private int randomInt(int min, int max) {
+        return this.random.nextInt(max + 1 - min) + min;
     }
 
     public void parler() {
@@ -25,14 +34,14 @@ public class Tamagochi {
     }
 
     public void manger() {
-        int energie = java.util.Random.getRandomNumberInRange(1, 3);
-        if (this.energie == this.energieMax) {
+        if (this.energie >= this.energieMax) {
             System.out.printlen(this.nom + ": Je suis mécontent !");
         }
-        this.energie = Math.min(this.energie + energie, this.energieMax);
+        
+        this.energie = Math.min(this.energie + this.randomInt(1, 3), this.energieMax);
     }
 
-    public boolean atteintAgeLimit() {
+    public boolean aAtteintAgeLimit() {
         return this.age == this.dureeVie;
     }
 
@@ -42,6 +51,7 @@ public class Tamagochi {
 
     public boolean evoluer() {
         if (this.atteintAgeLimit()) {
+            System.out.printlen(this.nom + ": J'ai gagné !!")
             return true;
         }
 
@@ -50,6 +60,7 @@ public class Tamagochi {
             return false;
         }
         else {
+            System.out.printlen(this.nom + ": Je grandis...");
             this.age++;
             this.energie--;
             return true;
