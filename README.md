@@ -1,2 +1,2 @@
-# TPJava
-TP Java
+#Java
+Java
