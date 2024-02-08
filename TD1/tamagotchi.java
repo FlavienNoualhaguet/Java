@@ -28,13 +28,13 @@ public class Tamagotchi {
             System.out.println(this.nom + ": Je suis heureux");
         }
         else {
-            System.out.println(this.nom + ": Je suis affamé !");
+            System.out.println(this.nom + ": Je suis affame !");
         }
     }
 
     public void manger() {
         if (this.energie >= this.energieMax) {
-            System.out.print(this.nom + ": Je suis mécontent !");
+            System.out.print(this.nom + ": Je suis mecontent !");
         }
         
         this.energie = Math.min(this.energie + this.randomInt(1, 3), this.energieMax);
@@ -50,7 +50,7 @@ public class Tamagotchi {
 
     public boolean evoluer() {
         if (this.atteintAgeLimit()) {
-            System.out.println(this.nom + ": J'ai gagné !!")
+            System.out.println(this.nom + ": J'ai gagne !!")
             return true;
         }
 
