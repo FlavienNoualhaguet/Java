@@ -19,7 +19,6 @@ public class Jeu {
 
         boolean unMort=false;
         int nbMature=0;
-        String msg;
         while (!unMort && nbMature < n) {
             nbMature = 0;
             for (int i=0; i<n; i++) {
