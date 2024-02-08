@@ -1,6 +1,4 @@
 import java.util.Random;
-import java.util.Math;
-
 
 public class Tamagotchi {
     private int dureeVie;
