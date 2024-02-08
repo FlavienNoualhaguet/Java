@@ -20,9 +20,17 @@ public class Humain {
         this.argent = argent;
     }
 
-    public String getNom() {return this.nom;}
-    public String getBoisson() {return this.boisson;}
-    public int getArgent() {return this.argent;}
+    public String getNom() {
+        return this.nom;
+    }
+    
+    public String getBoisson() {
+        return this.boisson;
+    }
+    
+    public int getArgent() {
+        return this.argent;
+    }
 
 
     public void parler(String msg) {
@@ -31,7 +39,7 @@ public class Humain {
     }
 
     public void direBonjour() {
-        String msg = String.format("Ma boisson préféré est %s et j'ai %d euros.", this.boisson, this.argent);
+        String msg = String.format("Ma boisson prefere est %s et j'ai %d euros.", this.boisson, this.argent);
         this.parler(msg);
     }
 
@@ -40,10 +48,10 @@ public class Humain {
     }
 
     public void gagnerArgent(int a) {
-        this.argent += a;
+        this.argent = this.argent + a;
     } 
 
     public void perdreArgent(int a) {
-        this.argent -= a;
+        this.argent = this.argent - a;
     } 
 }
