@@ -14,7 +14,6 @@ public class Jeu {
             System.out.print(msg);
             // Creation du Tamagotchi
             tamagotchis[i] = new Tamagotchi(scanner.next());
-            System.out.println();
         }
 
         boolean unMort=false;
