@@ -10,7 +10,7 @@ public class Jeu {
         String msg;
         for (int i=0; i<n; i++) {
             // Demande du nom du Tamagotchi numero i
-            msg = String.format("Tamagotichi n°%d: ", i+1);
+            msg = String.format("Tamagotichi %d: ", i+1);
             System.out.print(msg);
             // Creation du Tamagotchi
             tamagotchis[i] = new Tamagotchi(scanner.next());
