@@ -47,7 +47,7 @@ public class Tamagotchi {
     }
 
     public boolean evoluer() {
-        if (this.atteintAgeLimit()) {
+        if (this.aAtteintAgeLimit()) {
             System.out.println(this.nom + ": J'ai gagne !!");
             return true;
         }
