@@ -8,7 +8,7 @@ public class Jeu {
         tamagotchis = new Tamagotchi[n];
         Scanner scanner = new Scanner (System.in);
         String msg;
-        for (i=0, i<n, i++) {
+        for (int i=0; i<n; i++) {
             // Demande du nom du Tamagotchi numero i
             msg = String.format("Tamagotichi n°%d: ", i+1);
             System.out.print(msg);
@@ -22,7 +22,7 @@ public class Jeu {
         String msg;
         while (!unMort && nbMature < n) {
             nbMature = 0;
-            for (i=0, i<n, i++) {
+            for (int i=0; i<n; i++) {
                 msg = String.format("(%d): ", i);
                 System.out.print(msg);
                 tamagotchis[i].parler();
