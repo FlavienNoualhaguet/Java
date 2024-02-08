@@ -10,7 +10,7 @@ public class Tamagotchi {
     private String nom;
     private final Random random;
 
-    public Tamagochi(String name) {
+    public Tamagotchi(String name) {
         this.nom = name;
         this.age = 0;
         this.random = new Random();
