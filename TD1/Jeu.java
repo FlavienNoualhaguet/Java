@@ -32,10 +32,10 @@ public class Jeu {
             tamagotchis[numero].manger();
             
             for (Tamagotchi t: tamagotchis) {
-                if (t.evoluer()) {
+                if (!t.evoluer()) {
                     unMort=true;
                     break;
-                }
+                    }
 
                 else if (t.aAtteintAgeLimit() && t.estEnVie()) {
                     nbMature++;
