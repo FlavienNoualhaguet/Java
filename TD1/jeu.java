@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Jeu {
     public static void main (String[] args) {
-        private static Tamagotchi[] tamagotchis;
-        private int n = Integer.parseValue(args[0]);
+        Tamagotchi[] tamagotchis;
+        int n = Integer.parseValue(args[0]);
 
         tamagotchis = new Tamagotchi[n];
         Scanner scanner = new Scanner (System.in);
