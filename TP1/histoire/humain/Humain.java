@@ -17,7 +17,7 @@ public class Humain {
     public int getArgent() {return this.argent;}
 
 
-    public void parler(string msg) {
+    public static void parler(string msg) {
         String txt = String.format("[%s]: %s", this.nom, msg);
         System.out.println(txt);
     }
@@ -31,11 +31,11 @@ public class Humain {
         this.parler(String.format("Ahhh, un bon verre de %s ! GLOUPS !", this.boisson));
     }
 
-    public void gagnerArgent(int a) {
+    public static void gagnerArgent(int a) {
         this.argent += a;
     } 
 
-    public void perdreArgent(int a) {
+    public static void perdreArgent(int a) {
         this.argent -= a;
     } 
 }
