@@ -1,4 +1,4 @@
-package tamagotchi;
+package .;
 import java.util.Random;
 import java.util.Math;
 
@@ -26,16 +26,16 @@ public class Tamagotchi {
 
     public void parler() {
         if (this.energie >= 5) {
-            System.out.printlen(this.nom + ": Je suis heureux");
+            System.out.println(this.nom + ": Je suis heureux");
         }
         else {
-            System.out.printlen(this.nom + ": Je suis affamé !");
+            System.out.println(this.nom + ": Je suis affamé !");
         }
     }
 
     public void manger() {
         if (this.energie >= this.energieMax) {
-            System.out.printlen(this.nom + ": Je suis mécontent !");
+            System.out.print(this.nom + ": Je suis mécontent !");
         }
         
         this.energie = Math.min(this.energie + this.randomInt(1, 3), this.energieMax);
@@ -51,16 +51,16 @@ public class Tamagotchi {
 
     public boolean evoluer() {
         if (this.atteintAgeLimit()) {
-            System.out.printlen(this.nom + ": J'ai gagné !!")
+            System.out.println(this.nom + ": J'ai gagné !!")
             return true;
         }
 
         if (!this.estEnVie()) {
-            System.out.printlen(this.nom + ": Je meurt ...");
+            System.out.println(this.nom + ": Je meurt ...");
             return false;
         }
         else {
-            System.out.printlen(this.nom + ": Je grandis...");
+            System.out.println(this.nom + ": Je grandis...");
             this.age++;
             this.energie--;
             return true;
