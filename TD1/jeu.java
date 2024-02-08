@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Jeu {
     public static void main (String[] args) {
         Tamagotchi[] tamagotchis;
-        int n = Integer.parseValue(args[0]);
+        int n = Integer.parseInt(args[0]);
 
         tamagotchis = new Tamagotchi[n];
         Scanner scanner = new Scanner (System.in);
@@ -14,7 +14,7 @@ public class Jeu {
             System.out.print(msg);
             // Creation du Tamagotchi
             tamagotchis[i] = new Tamagotchi(scanner.next());
-            System.out.printlen();
+            System.out.println();
         }
 
         boolean unMort=false;
