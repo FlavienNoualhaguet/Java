@@ -26,9 +26,39 @@ public class PetitPrince implements ISujet, IJoueur {
     private ConsoleJavaBoy consoleJavaBoy;
     private Random random;
 
+    private class Tuple {
+        private final int  x;
+        private final int y;
+        private final double distance;
+        private final int sujet;
+
+        public Tuple(int x, int y, double distance, int sujet) {
+            this.x = x;
+            this.y = y;
+            this.distance = distance;
+            this.sujet = sujet;
+        } 
+
+        public int getX() {
+            return x;
+        }
+
+        public int getY() {
+            return y;
+        }
+
+        public double getDistance() {
+            return distance;
+        }
+
+        public int getSujet() {
+            return sujet;
+        }
+    }
+    
     public PetitPrince(String nom) {
         this.nom = nom;
-        this.argent = 100;
+        this.argent = 1000;
         this.consoleJavaBoy= new ConsoleJavaBoy(this);
         this.random = new Random();
     }
@@ -46,38 +76,26 @@ public class PetitPrince implements ISujet, IJoueur {
 
     @Override
     public void run() {
-        String msg = String.format("Bonjour je m'appelle %s et j'ai %d euros !", this.getNom(), this.getArgent());
-        this.consoleJavaBoy.parler(msg);
-        this.consoleJavaBoy.seDirigerVers(0);
-        
+       // String msg = String.format("Bonjour je m'appelle %s et j'ai %d euros !", this.getNom(), this.getArgent());
+       // this.consoleJavaBoy.parler(msg);     
         // Find matrix
         int[][] V = this.consoleJavaBoy.regarder();
-        int[] XY = this.chercherLePlusProche(V);
-        int x = XY[0], y = XY[1];
+        Tuple adversaire = this.chercherLePlusProche(V);
         
         List<AJeu> jeux = Arrays.asList(new De("De from "+ this.getNom()), 
                                         new Shifumi("Shifumi from " + this.getNom()),
                                         new PileFace("Coin game from " + this.getNom()));
         
-        if (this.calculDistance(x, y) <= 1) {
-            AJeu jeu = jeux.get(this.random.nextInt(jeux.size()));
-            int gain = 10;
-            Integer comparaison = jeu.arbitrer(jeu.jouerUnCoup(), jeu.jouerUnCoup());
-            
-            if (1 == comparaison) {
-                this.gagner(gain);
-                 msg = String.format("%s: J'ai gagne %d euros au jeu %s !!", this.getNom(), this.getArgent(), jeu.getNom());
+       if (adversaire.getSujet() == -1) {
+            this.consoleJavaBoy.seDirigerVers(0);
+       }
+       else if (adversaire.getDistance()<= 1) {
+                AJeu jeu = jeux.get(this.random.nextInt(jeux.size()));
+                this.consoleJavaBoy.jouer(jeu, adversaire.getSujet());
             }
-            
-            else if (-1 == comparaison) {
-                    this.perdre(gain);
-                    msg = String.format("%s: J'ai perdu %d euros au jeu %s !!", this.getNom(), this.getArgent(), jeu.getNom());
+            else {
+                this.consoleJavaBoy.seDirigerVers(adversaire.getSujet());
             }
-                else {
-                    msg = String.format("%s: Match nul au jeu %s !!", this.getNom(), jeu.getNom());
-                }
-            this.consoleJavaBoy.parler(msg);
-        }
     }
     
     private double calculDistance(int x, int y){
@@ -85,38 +103,43 @@ public class PetitPrince implements ISujet, IJoueur {
     }
     
     
-    private int[] chercherLePlusProche(int[][] V) {
+    private Tuple chercherLePlusProche(int[][] V) {
         double minactuel = Double.MAX_VALUE;
-        int[] leplusproche = new int[]{-1, -1}; // Initialize with invalid coordinates
-
+        int X=-1;
+        int Y=-1;
+        int sujet=-1;
+        int cxy;
         for (int x = 0; x < V.length; x++) {
             for (int y = 0; y < V[x].length; y++) {
-                int cxy = V[x][y];
+                cxy = V[x][y];
                 if (cxy != 0) {
                     double distance = this.calculDistance(x, y);
                     if (distance < minactuel) {
                         minactuel = distance;
-                        leplusproche[0] = x;
-                        leplusproche[1] = y;
+                        X = x;
+                        Y = y;
+                        sujet=cxy;
                     }
                 }
             }
         }
-
-        return leplusproche;
+        Tuple tuple = new Tuple(X, Y, minactuel, sujet);
+        return tuple;
     }
     
     public static void main(String[] args) {
-        PetitPrince monPetitPrince = new PetitPrince("Chess.com");        
+        PetitPrince monPetitPrince = new PetitPrince("PPO");        
     }
 
     @Override
     public void gagner(int montant) {
+        this.consoleJavaBoy.parler(this.getNom()+" : J'ai gagne ;)");
         this.argent += montant;
     }
 
     @Override
     public void perdre(int montant) {
+        this.consoleJavaBoy.parler(this.getNom()+" : J'ai perdu !!!! :(");
         this.argent -= montant;
     }
 }
