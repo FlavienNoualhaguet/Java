@@ -1,0 +1,12 @@
+fr.enac.sita.visuradar
+fr.enac.sita.visuradar.communication
+fr.enac.sita.visuradar.data.cartoxanthane
+fr.enac.sita.visuradar.data.param
+fr.enac.sita.visuradar.data.xmladapters
+fr.enac.sita.visuradar.model
+fr.enac.sita.visuradar.view.controls
+fr.enac.sita.visuradar.view.statemachines
+fr.enac.sita.visuradar.view.views
+fr.liienac.statemachine
+fr.liienac.statemachine.event
+fr.liienac.statemachine.geometry
